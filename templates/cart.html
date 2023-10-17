@@ -1,0 +1,18 @@
+{% extends "header.html" %}
+{% block title %}
+Sulaimon Shopping - {{item.name}}
+
+{% endblock %}
+
+{% block content %}
+<br/><br/><br/><br/><br/><br/><br/><br/><br/>
+  <div class="cart_view container-fluid show-item">
+    <div class="d-flex justify-content-center text-center inner-show-item">
+      <img class="w-100" src={{item.image.url}} alt="item" />
+    </div>
+    <div class="item-description">
+      <h2>{{item.name}}</h2>
+      <a class="btn btn-primary btn-add" href="/add/{{item.id}}">Add to Cart</a>
+    </div>
+  </div>
+{% endblock %}

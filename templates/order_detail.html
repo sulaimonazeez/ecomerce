@@ -1,0 +1,30 @@
+{% extends "header.html" %}
+
+{% block title %} Payment {% endblock %}
+
+{% block content %}
+   <div class="mt-5 container-fluid">
+     <div class="mt-5 container billing-container">
+        <h2>Billing Information</h2>
+        <form method="post" action="/">
+            <label for="name">Name:</label>
+            <input class="form-control" type="text" id="name" name="name" placeholder="Your name">
+
+            <label for="email">Email:</label>
+            <input class="form-control" type="email" id="email" name="email" placeholder="Your email">
+
+            <label for="address">Address:</label>
+            <textarea class="form-control" id="address" name="address" placeholder="Your address"></textarea>
+
+            <label for="card">Credit Card Number:</label>
+            <input class="form-control" type="text" id="card" name="card" placeholder="Card number">
+
+            <label for="expiry">Expiry Date:</label>
+            <input class="form-control" type="text" id="expiry" name="expiry" placeholder="MM/YY">
+            <label for="price">Amount</label>
+            <input class="form-control" name="price" type="text" value="${{order.total_price}}" disabled=""/><br/>
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </form>
+    </div>
+   </div>
+{% endblock %}

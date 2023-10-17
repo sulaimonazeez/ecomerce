@@ -1,0 +1,323 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,100;9..40,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,100;9..40,700&family=Public+Sans:wght@100&display=swap');
+
+.open {
+  font-family: 'Public Sans', sans-serif;
+}
+.fa-truck > i{
+ font-size: 20vw;
+}
+.wood-stock {
+  width: 100%;
+}
+#home-bg {
+  height: 80vh;
+}
+.increaser {
+  display: flex;
+  justify-content: space-between;
+  background-color: blue;
+  color: white;
+  border-radius: 2%;
+  position: relative;
+  top: 0vw;
+}
+#image-carousel {
+  height: 500px;
+  width: 100%;
+}
+#image-carousels {
+  height: 300px;
+  width: 100%;
+}
+.user {
+  position: relative;
+  left:4vw;
+  text-decoration: nonon
+  color: black;
+}
+.premium {
+  position: relative;
+  margin-top: -10vw;
+}
+.btn-add {
+  text-decoration: none;
+  background-color: blue;
+  color: white;
+}
+.show-item{
+  margin-top: 8vw;
+}
+.increaser > span {
+  position: relative;
+  top: 2vw;
+}
+.increaser > a {
+  text-decoration: none;
+  color: white;
+  font-size: 6vw;
+}
+.data-head {
+  font-family: Georgia, serif;
+}
+.close {
+  display: none;
+}
+.topNav {
+  display:flex;
+  justify-content: space-between;
+  padding-left: 3vw;
+  padding-right: 3vw;
+}
+.logos {
+  width: 40%;
+  height: 10vw;
+}
+hoove:hover {
+  transform: scale(1.1);
+}
+.checkout {
+  text-align: center;
+}
+.profile-icon {
+  height: 100vw;
+}
+.badge {
+  position: relative;
+  top: -10px;
+}
+.top-flex > img{
+  width: 10vw;
+  height: 10vw;
+  border-radius: 5%;
+}
+.cart_view > .top-flex {
+  display: flex;
+  justify-content: space-between;
+}
+.pill {
+  border-radius: 50%;
+  margin-right: 15px;
+}
+.pill > img {
+  width: 90vw;
+  height: 60vw;
+}
+.cart_view {
+  width:80%;
+  background:#FFF;
+  margin:40px auto;
+  padding: 4vw;
+  -moz-box-shadow: 0 0 5px #999;
+  -webkit-box-shadow: 0 0 5px #999;
+  box-shadow: 0 0 5px #999;
+}
+.cart_view > h6 {
+  color: white;
+  position: relative;
+  left: 4vw;
+}
+#scroller-x {
+  display: flex;
+  overflow-x: auto;
+  padding: 2vw;
+  margin: 2vw;
+}
+.col {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.to-cart {
+  text-decoration: none;
+  color: black;
+  position: relative;
+  top: 5vw;
+}
+.flow {
+  width:100%;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: thin;
+  scrollbar-color: transparent;
+  -ms-overflow-style: none;
+}
+.flow > div {
+  display: inline-block;
+  margin-right: 4vw;
+}
+.captions {
+  position: relative;
+  top: -120px;
+}
+#myscroller {
+  width:100%;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: thin;
+  scrollbar-color: transparent;
+  -ms-overflow-style: none;
+}
+::-webkit-scrollbar {
+  border: none;
+}
+::-webkit-scrollbar-track {
+  border: none;
+}
+.fa-shopping-cart {
+  font-size: 30px;
+}
+.boxs {
+  padding: 3vw;
+  position: fixed;
+  box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  z-index: 1;
+  top:0;
+  background-color: white;
+}
+a > span {
+  color: white;
+}
+ul {
+  display: none;
+}
+body {
+  padding: 0;
+  margin: 0;
+}
+.container-fluid {
+  padding: 1vw;
+  margin: 1vw;
+}
+
+.box > h3{
+  text-align:center;
+  position:relative;
+  top:80px;
+}
+.box {
+  width:80%;
+  background:#FFF;
+  margin:40px auto;
+  padding: 4vw;
+  -moz-box-shadow: 0 0 5px #999;
+  -webkit-box-shadow: 0 0 5px #999;
+  box-shadow: 0 0 5px #999;
+}
+.box > img {
+  width: 70%;
+  position: relative;
+  left: 15%;
+}
+.box > h4 {
+  color: blue;
+}
+.price {
+  border: blue solid 1px;
+  text-align: center;
+  background-color: white;
+  border-radius: 50vw;
+  width: 100%;
+  padding: 1vw;
+  
+}
+.to-cart-link {
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  background-color: blue;
+  border-radius: 50vw;
+  padding: 1vw;
+  font-weight: bold;
+}
+.carousel-font {
+  font-weight: bold;
+  font-family: 'Arial', sans-serif;
+}
+.carousel-caption {
+  position: relative;
+  text-align: left;
+  left: 10%; /* Adjust as needed for desired left alignment */
+  top: 30%;
+}
+.fa-star {
+  padding: 1vw;
+  position: relative;
+  left: -1vw;
+}
+#span {
+  position: relative;
+  top: -3vw;
+}
+#span > .fa-star {
+  font-size: 3vw;
+}
+@media only screen and (min-width: 768px){
+  ul {
+   display: flex;
+   justify-content: space-between;
+   position: relative;
+   top: -1vw;
+}
+ul > li {
+  list-style: none;
+  padding:2vw;
+  color: black;
+}
+li > a {
+  text-decoration: none;
+  color: black;
+}
+.topNav > h3 {
+  position: relative;
+  top: -1vw;
+}
+.w-100 {
+  height: 30vw;
+}
+.box {
+  height: 72vw;
+}
+.to-cart {
+  position: relative;
+  top: 0.5vw;
+}
+.cart_view {
+  width:60%;
+  background:#FFF;
+  margin:40px auto;
+  padding: 4vw;
+  -moz-box-shadow: 0 0 5px #999;
+  -webkit-box-shadow: 0 0 5px #999;
+  box-shadow: 0 0 5px #999;
+}
+.carousel-font {
+  font-size: 8vw;
+}
+.left-go {
+  position: relative;
+  left:110%;
+}
+#caro > p {
+  font-size: 2.5vw
+}
+#span {
+  position: relative;
+  top: -1vw;
+}
+#span > .fa-star {
+  font-size: 1.5vw;
+}
+.fa-star {
+  padding: 0.5vw;
+  left:-0.5vw;
+}
+#image-carousel {
+  height: 700px;
+  width: 100%;
+}
+.captions {
+  position: relative;
+  top: -170px;
+}
+}
