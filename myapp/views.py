@@ -8,7 +8,7 @@ def home(request):
     gadget = Products.objects.filter(category__name="Gadget")[0]
     jel = Products.objects.filter(category__name="JEWELERY")[0]
     elec = Products.objects.filter(category__name="Electronic")[0]
-    products = Products.objects.all()
+    products = Products.objects.all().order_by("-name")[0:20]
     length = CartItem.objects.all()
     return render(request, 'home.html', {'data': products, "length":len(length), "products":products, "gadget":gadget, "jewelery":jel,"eletronic":elec})
 
