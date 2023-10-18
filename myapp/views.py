@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate,login, logout
 from django.contrib import messages
 from .models import Category, Products, UserProfile, Cart, CartItem, Order, Payment
-
+from django.contrib.auth.models import User
 def home(request):
   
     gadget = Products.objects.filter(category__name="Gadget")[0]
@@ -41,6 +41,33 @@ def increase(request, id):
   indx.save()
   return redirect("cart")
 
+def logout_view(request):
+  logout(request)
+  return redirect("/")
+  
+
+def signup(request):
+ if request.method == "POST":
+      username = request.POST.get("username")
+      email = request.POST.get("email")
+      password = request.POST.get("password")
+        
+      if email and password and username:
+          if User.objects.filter(username=username).exists() or User.objects.filter(email=email).exists():
+                # Handle existing user case, e.g., display an error message
+                return render(request, "signup.html", {"error": "User with that username or email already exists."})
+          # Create a new user instance
+          user = User.objects.create_user(username=username, password=password, email=email)
+            
+          # Save the user to the database
+          user.save()
+            
+          # Redirect to the login page
+          return redirect("/account/login")
+    
+ return render(request, "signup.html")
+
+  
 def descrease(request, id):
   indx = CartItem.objects.get(id=id)
   if (indx.quantity > 1):
