@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate,login, logout
 from django.contrib import messages
 from .models import Category, Products, UserProfile, Cart, CartItem, Order, Payment
 
@@ -50,26 +51,28 @@ def cart_item(request,id):
     length = CartItem.objects.all()
     return render(request, 'cart.html', {'item': product, "length":len(length)})
 
-from django.contrib.auth import authenticate, login, logout
-from django.shortcuts import render, redirect
-
 def login_view(request):
-  if request.method == 'POST':
-    username = request.POST['username']
-    password = request.POST['password']
-    user = authenticate(request, username=username, password=password)
-    if user is not None:
-      login(request, user)
-      redirect("/")
+    if request.method == 'POST':
+        username = request.POST.get('username')  # Use get() to avoid KeyError
+        password = request.POST.get('password')
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            messages.success(request, "Your successfully login")
+            return redirect("/")  # Fixed: Use return to redirect
+
+        else:
+            # Handle authentication failure, e.g., display an error message
+            messages.error(request, 'Invalid password or username!')
+            return redirect("/account/login")  # Fixed: Use return to redirect
+
     else:
-      # Handle authentication failure, e.g., display an error message
-      messages.error(request, 'Inavalid password or username!')
-      redirect("/account/login")
-  else:
-    if request.user.is_authenticated:
-      return render(request,"profile.html")
-    else:
-      return render(request, 'login.html')
+        if request.user.is_authenticated:
+            return render(request, "profile.html")
+        else:
+            return render(request, 'login.html')
 @login_required
 def add_to_cart(request, id):
   if not request.user.is_authenticated:
