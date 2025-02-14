@@ -10,7 +10,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <link rel="stylesheet" href={% static "App.css" %} />
+    <link rel="stylesheet" href='{% static "App.css" %}'' />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
@@ -42,8 +42,8 @@
       .logos {
         position: relative;
         top: 3px;
-        width: 25%;
-        height: 8vw
+        width: 11rem;
+        height: 2.5rem;
       }
       .contacts > a {
         text-decoration: none;
@@ -57,28 +57,53 @@
       footer {
         bottom: 0;
       }
-      @media only screen and (min-width: 768px){
-        .logos {
-          height: 5vw;
-      }
-      .sub {
-        left: 100%;
-      }
+      @media only screen and (min-width: 968px){
+          .logos {
+              height: 2rem;
+              position: relative;
+              top: -0.5rem;
+            }
+          .badge-danger {
+            position: relative;
+            top: -2.3rem;
+            left: 1.2rem;
+          }
+          .sub {
+            left: 100%;
+          } 
+          .navbar {
+            height: 4rem;
+            display: flex;
+          }
+          .carts {
+            position: relative;
+            left: 5rem;
+            top: 0.5rem;
+          }
+          .searchers {
+            position: relative;
+            left: 3.7rem;
+          }
+          .user {
+            position: relative;
+            left: 12rem;
+            top: -0.7rem;
+          }
       }
     </style>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
-      <div class="p-2">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top p-2 bg-light">
+      <div class="">
            <button onclick="Show()" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 <i class="navbar-toggler-icon"></i>
   </button>
          <a class="user" href="/account/login"><i class="fa fa-user"></i></a>
        </div>
-         <img class="logos" src={% static "woodstock-logo.png" %} alt="logo" />
-       <div class="p-2">
-         <a class="shop" href="/search"><i class="searcher fa fa-search"></i></a>
-         <a class="shop" href="/cart"><i class="fa fa-shopping-cart"></i><span class="badge badge-danger">{{length}}</span></a>
+         <img class="logos" src='{% static "woodstock-logo.png" %}' alt="logo" />
+       <div class="m-3">
+         <a class="shop searchers" href="/search"><i class="searcher fa fa-search"></i></a>
+         <a class="shop carts" href="/cart"><i class="fa fa-shopping-cart"></i><span class="badge badge-danger">{{length}}</span></a>
        </div>
   <div class="container-fluid collapse navbar-collapse justify-content-end" id="navbarNav">
     <ul class="navbar-nav">

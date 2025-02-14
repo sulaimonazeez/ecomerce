@@ -1,32 +1,175 @@
-{% extends "header.html" %}
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url("{% static 'download2.jfif' %}");
+            background-repeat: no-repeat;
+            color: white;
+            font-family: Arial, sans-serif;
+            flex-direction: column;
+            background-size: cover;
+        }
+        .signup-container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            width: 300px;
+            box-shadow: 3px 0 7px rgba(255, 255, 255, 0.2);
+            position: relative;
+            z-index: 2;
+        }
+       
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        .input-group {
+            position: relative;
+            margin: 20px 0;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            background: transparent;
+            border: 1px solid white;
+            outline: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        .input-group label {
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            transition: 0.3s;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .input-group input:focus + label,
+        .input-group input:not(:placeholder-shown) + label {
+            top: -10px;
+            left: 5px;
+            font-size: 12px;
+            color: white;
+        }
+        .signup-btn {
+            width: 100%;
+            padding: 10px;
+            background: #ff4500;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            position: relative;
+            transition: 0.3s;
+        }
+        .signup-btn:disabled {
+            background: grey;
+            cursor: not-allowed;
+        }
+        .terms {
+            margin-top: 15px;
+            font-size: 12px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 12px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        .login-link {
+            margin-top: 15px;
+            font-size: 14px;
+            text-align: center;
+        }
+        .login-link a {
+            color: #ff4500;
+            text-decoration: none;
+        }
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="animation-wrapper"></div>
+    <div class="signup-container">
+        <h2>Signup</h2>
+        <form id="signupForm" method="post">
+          {% csrf_token %}
+            <div class="input-group">
+                <input type="text" id="username" required placeholder=" " name="username">
+                <label for="username">Username</label>
+            </div>
+            <div class="input-group">
+                <input type="email" id="email" required placeholder=" " name="email">
+                <label for="email">Email</label>
+            </div>
+            <div class="input-group">
+                <input name="password" type="password" id="password" required placeholder=" ">
+                <label for="password">Password</label>
+            </div>
+            <div class="input-group">
+                <input name="confirm_password" type="password" id="confirm_password" required placeholder=" ">
+                <label for="confirm_password">Confirm Password</label>
+            </div>
+            <p class="error" id="error"></p>
+            <button type="submit" class="signup-btn" id="signupBtn">
+                Signup
+            </button>
+        </form>
+        <div class="terms">
+            By signing up, you agree to our <a href="/terms">Terms and Conditions</a>.
+        </div>
+        <div class="login-link">
+            Already have a customer account? <a href="/account/login">Login</a>
+        </div>
+    </div>
+    <div class="footer">
+        &copy; 2020 eCommerce. All rights reserved.
+    </div>
+    
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', function(event) {
+            let signupBtn = document.getElementById('signupBtn');
+            let spinner = document.getElementById('spinner');
+            let pwd1 = document.getElementById("password");
+            errors = document.getElementById("error");
+            let pwd2 = document.getElementById("confirm_password");
+            signupBtn.disabled = true;
+            spinner.style.display = 'inline-block';
+            
 
-{% block title %}
-  Login 
-{% endblock %}
-
-{% block content %}
-<br/><br/><br/><br/><br/><br/><br/>
-<div class="container">
-  <h2 class="text-center">Sign Up</h2>
-  <form method="post" class='container-fluid'>
-    {% csrf_token %}
-    <div class="form-group">
-      <label for="username">Username:</label>
-      <input type="text" class="form-control" id="username" placeholder="Enter username" name="username">
-    </div>
-    <div class="form-group">
-      <label for="email">Email:</label>
-      <input type="email" class="form-control" id="email" placeholder="Enter Email" name="email">
-    </div>
-    <div class="form-group">
-      <label for="password">Password:</label>
-      <input type="password" class="form-control" id="password" placeholder="Enter password" name="password">
-    </div>
-    <div class="text-danger">
-      <p>{{error}}</p>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button><br/><br/>
-    <p>Already have coustomer account? <a href="/account/login">login</a></p>
-  </form>
-</div>
-{% endblock %}
+            if (pwd1 !== pwd2) {
+              event.preventDefault();
+              errors.innerHTML = "Password is not match";
+              errors.style.color = "red";           
+            
+            }
+            // Simulating an API call
+            setTimeout(() => {
+                alert('Signup Successful'); // Replace with actual signup logic
+                signupBtn.disabled = false;
+                spinner.style.display = 'none';
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
