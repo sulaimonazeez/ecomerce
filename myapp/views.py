@@ -10,8 +10,11 @@ def home(request):
     jel = Products.objects.filter(category__name="JEWELERY")[0]
     elec = Products.objects.filter(category__name="Electronic")[0]
     products = Products.objects.all()[0:20]
-    length = CartItem.objects.all()
-    return render(request, 'home.html', {'data': products, "length":len(length), "products":products, "gadget":gadget, "jewelery":jel,"eletronic":elec})
+    if request.user.is_authenticated:
+       length = CartItem.objects.filter(cart__user=request.user).count()
+    else:
+       length = 0
+    return render(request, 'home.html', {'data': products, "length":length, "products":products, "gadget":gadget, "jewelery":jel,"eletronic":elec})
 
 
 def categoryed(request, id):
@@ -110,7 +113,6 @@ def add_to_cart(request, id):
     user = request.user
     cart, created = Cart.objects.get_or_create(user=user)
     cart_item, created = CartItem.objects.get_or_create(cart=cart, product=product)
-    cart_item.quantity += 1
     cart_item.save()
     messages.success(request, 'Product added to cart successfully!')
     return redirect('/')

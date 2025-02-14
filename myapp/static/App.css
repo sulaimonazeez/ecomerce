@@ -148,6 +148,11 @@ hoove:hover {
   position: relative;
   top: -120px;
 }
+
+.items-image {
+  width: 10rem;
+  height: 10rem;
+}
 #myscroller {
   width:100%;
   overflow-x: auto;
